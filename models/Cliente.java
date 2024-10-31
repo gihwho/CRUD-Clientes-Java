@@ -4,12 +4,16 @@ public class Cliente {
     private int id;
     private String nome, email, endereco;
 
+    //permite criar um objeto Cliente com todos seus atributos já definidos
     public Cliente (int id, String nome, String email, String endereco) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.endereco = endereco;
     }
+
+    //permite instanciar objetos sem valores iniciais obrigatórios
+    public Cliente () {}
 
     public int getId() {
         return id;
