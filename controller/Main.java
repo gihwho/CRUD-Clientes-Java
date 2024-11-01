@@ -1,5 +1,7 @@
-import models.Cliente;
-import models.ClienteDAO;
+package controller;
+
+import model.Cliente;
+import DAO.ClienteDAO;
 
 import java.sql.SQLException;
 
@@ -24,7 +26,7 @@ public class Main {
         atualizar.setIdcliente(3);
         atualizar.setNome("Maria Lemos Arruda");
         atualizar.setEmail("marialemosarruda@yahoo.com.br");
-        atualizar.setEndereco("Ondas Azuis Cristalinas, 946");
+        atualizar.setEndereco("Ondas Azuis Cristalinas, 100");
         clienteDAO.atualizar(atualizar);
 
         //exclusão de cliente

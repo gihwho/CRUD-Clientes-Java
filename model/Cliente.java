@@ -1,4 +1,4 @@
-package models;
+package model;
 
 public class Cliente {
     private int idcliente;
