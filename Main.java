@@ -21,11 +21,11 @@ public class Main {
 //       }
 
         //atualização de cliente
-        atualizar.setIdcliente(3);
-        atualizar.setNome("Maria Lemos Arruda");
-        atualizar.setEmail("marialemosarruda@yahoo.com.br");
-        atualizar.setEndereco("Ondas Azuis Cristalinas, 100");
-        clienteDAO.atualizar(atualizar);
+//        atualizar.setIdcliente(3);
+//        atualizar.setNome("Maria Lemos Arruda");
+//        atualizar.setEmail("marialemosarruda@yahoo.com.br");
+//        atualizar.setEndereco("Ondas Azuis Cristalinas, 100");
+//        clienteDAO.atualizar(atualizar);
 
         //exclusão de cliente
 //       clienteDAO.deletar(2);

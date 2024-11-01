@@ -10,8 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.sql.DriverManager.getConnection;
-
+//lida com persistência de dados
 public class ClienteDAO {
     public void criar(Cliente novoCliente) {
         String query = "INSERT INTO cliente (nome, email, endereco) VALUES (?, ?, ?)";    //query
@@ -38,25 +37,6 @@ public class ClienteDAO {
             throw new RuntimeException(e);
         }
         return cliente; //retorna a lista
-    }
-
-    public Cliente buscarID (int idcliente) {
-        String query = "SELECT * FROM cliente WHERE idcliente = ?";
-        Cliente novoCliente = new Cliente();
-
-        try (Connection conn = DatabaseCliente.getConnection(); PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setInt(1, idcliente);
-            ResultSet rs = stmt.executeQuery();
-
-             if (rs.next()) {
-                novoCliente.setNome(rs.getString("nome"));
-                novoCliente.setEmail(rs.getString("email"));
-                novoCliente.setEndereco(rs.getString("endereco"));
-             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return novoCliente;
     }
 
     public void atualizar(Cliente novocliente) {
