@@ -1,5 +1,3 @@
-package controller;
-
 import model.Cliente;
 import DAO.ClienteDAO;
 
