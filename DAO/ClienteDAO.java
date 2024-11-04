@@ -30,7 +30,7 @@ public class ClienteDAO {
         List<Cliente> cliente = new ArrayList<>();
         String query = "SELECT * FROM cliente";
         try (Connection conn = DatabaseCliente.getConnection(); PreparedStatement stmt = conn.prepareStatement(query); ResultSet rs = stmt.executeQuery()) { //rs executa a query e armazena
-            while (rs.next()) {
+            while (rs.next()) {     //resultset representa um registro retornado do db, rs.next() faz com que seja mostrado o próximo registro
                 cliente.add(new Cliente(rs.getInt("idcliente"),rs.getString("nome"), rs.getString("email"), rs.getString("endereco")));
             }
         } catch (SQLException e) {
@@ -39,13 +39,13 @@ public class ClienteDAO {
         return cliente; //retorna a lista
     }
 
-    public void atualizar(Cliente novocliente) {
+    public void atualizar(Cliente atualizaCliente) {
         String query = "UPDATE cliente SET nome = ?, email = ?, endereco = ? WHERE idcliente = ?";
         try (Connection conn = DatabaseCliente.getConnection(); PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setString(1, novocliente.getNome());
-            stmt.setString(2, novocliente.getEmail());
-            stmt.setString(3, novocliente.getEndereco());
-            stmt.setInt(4, novocliente.getIdcliente());
+            stmt.setString(1, atualizaCliente.getNome());
+            stmt.setString(2, atualizaCliente.getEmail());
+            stmt.setString(3, atualizaCliente.getEndereco());
+            stmt.setInt(4, atualizaCliente.getIdcliente());
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);

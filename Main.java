@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) throws SQLException {
         ClienteDAO clienteDAO = new ClienteDAO();
         Cliente novoCliente = new Cliente();
-        Cliente atualizar = new Cliente();
+        Cliente atualizaCliente = new Cliente();
 
         //criação de clientes
 //        novoCliente.setNome("Lucy Fernandes");
@@ -16,16 +16,16 @@ public class Main {
 //        clienteDAO.criar(novoCliente);
 
         //listagem de todos clientes
-//       for (Cliente todosCliente : clienteDAO.listarClientes()) {
+//       for (Cliente todosCliente : clienteDAO.listarClientes()) {     // todosCliente representará o próximo elemento da lista listarClientes()
 //            System.out.println("ID: " + todosCliente.getIdcliente() + " | Nome: " + todosCliente.getNome() + " | Email: " + todosCliente.getEmail() + " | Endereço: " + todosCliente.getEndereco());
 //       }
 
         //atualização de cliente
-//        atualizar.setIdcliente(3);
-//        atualizar.setNome("Maria Lemos Arruda");
-//        atualizar.setEmail("marialemosarruda@yahoo.com.br");
-//        atualizar.setEndereco("Ondas Azuis Cristalinas, 100");
-//        clienteDAO.atualizar(atualizar);
+//        atualizaCliente.setIdcliente(3);
+//        atualizaCliente.setNome("Maria Lemos Arruda");
+//        atualizaCliente.setEmail("marialemosarruda@yahoo.com.br");
+//        atualizaCliente.setEndereco("Ondas Azuis Cristalinas, 190");
+//        clienteDAO.atualizar(atualizaCliente);
 
         //exclusão de cliente
 //       clienteDAO.deletar(2);

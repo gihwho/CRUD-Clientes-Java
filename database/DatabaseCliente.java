@@ -20,7 +20,6 @@ public class DatabaseCliente {
     }
 }
 
-
 /*
 SCRIPT BANCO DE DADOS
 -- MySQL Workbench Forward Engineering
