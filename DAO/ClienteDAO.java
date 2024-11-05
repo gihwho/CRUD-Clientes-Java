@@ -16,7 +16,7 @@ public class ClienteDAO {
         String query = "INSERT INTO cliente (nome, email, endereco) VALUES (?, ?, ?)";    //query
         try (Connection conn = DatabaseCliente.getConnection(); PreparedStatement stmt = conn.prepareStatement(query);)     //prepared p executar a query
         {
-            stmt.setString(1, novoCliente.getNome());
+            stmt.setString(1, novoCliente.getNome());                   //set = define valores nos parâmetros da query | get = Recuperam o valor dos atributos do objeto novoCliente para que sejam usados como parâmetros SQL
             stmt.setString(2, novoCliente.getEmail());
             stmt.setString(3, novoCliente.getEndereco());
 
