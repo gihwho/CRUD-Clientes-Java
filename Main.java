@@ -22,12 +22,12 @@ public class Main {
 
         //atualização de cliente
 //        atualizaCliente.setIdcliente(3);
-//        atualizaCliente.setNome("Maria Lemos Arruda");
-//        atualizaCliente.setEmail("marialemosarruda@yahoo.com.br");
-//        atualizaCliente.setEndereco("Ondas Azuis Cristalinas, 190");
+//        atualizaCliente.setNome("Joana Maria");
+//        atualizaCliente.setEmail("joanamaria@yahoo.com.br");
+//        atualizaCliente.setEndereco("Maré Alta, 444");
 //        clienteDAO.atualizar(atualizaCliente);
 
         //exclusão de cliente
-//       clienteDAO.deletar(2);
+       clienteDAO.deletar(3);
     }
 }
