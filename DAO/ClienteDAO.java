@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-//lida com persistência de dados
+//lida com persistência de dados | acessa e manipula os dados no banco de dados
 public class ClienteDAO {
     public void criar(Cliente novoCliente) {
         String query = "INSERT INTO cliente (nome, email, endereco) VALUES (?, ?, ?)";    //query
@@ -37,6 +37,27 @@ public class ClienteDAO {
             throw new RuntimeException(e);
         }
         return cliente; //retorna a lista
+    }
+
+    public Cliente listarPorID (int id) throws SQLException {
+        Cliente cliente = null;
+        String query = "SELECT * FROM cliente WHERE idcliente = ?";
+        try (Connection conn = DatabaseCliente.getConnection(); PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, id);
+
+            try(ResultSet rs = stmt.executeQuery()) {   //stmt chamado após pq a query tem parâmetros (?)
+                if (rs.next()) {
+                    cliente = new Cliente();
+                    cliente.setIdcliente(rs.getInt("idcliente"));
+                    cliente.setNome(rs.getString("nome"));
+                    cliente.setEmail(rs.getString("email"));
+                    cliente.setEndereco(rs.getString("endereco"));
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return cliente;
     }
 
     public void atualizar(Cliente atualizaCliente) {
