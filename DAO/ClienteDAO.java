@@ -40,24 +40,23 @@ public class ClienteDAO {
     }
 
     public Cliente listarPorID (int id) throws SQLException {
-        Cliente cliente = null;
+        Cliente clienteID = new Cliente();
         String query = "SELECT * FROM cliente WHERE idcliente = ?";
         try (Connection conn = DatabaseCliente.getConnection(); PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, id);
 
             try(ResultSet rs = stmt.executeQuery()) {   //stmt chamado após pq a query tem parâmetros (?)
                 if (rs.next()) {
-                    cliente = new Cliente();
-                    cliente.setIdcliente(rs.getInt("idcliente"));
-                    cliente.setNome(rs.getString("nome"));
-                    cliente.setEmail(rs.getString("email"));
-                    cliente.setEndereco(rs.getString("endereco"));
+                    clienteID.setIdcliente(rs.getInt("idcliente"));
+                    clienteID.setNome(rs.getString("nome"));
+                    clienteID.setEmail(rs.getString("email"));
+                    clienteID.setEndereco(rs.getString("endereco"));
                 }
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return cliente;
+        return clienteID;
     }
 
     public void atualizar(Cliente atualizaCliente) {
