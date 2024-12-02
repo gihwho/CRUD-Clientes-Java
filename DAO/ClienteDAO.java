@@ -46,14 +46,14 @@ public class ClienteDAO {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
 
-                if (rs.next()) {    //se o cliente for encontrado, retorna isso
-                    clienteID.setIdcliente(rs.getInt("idcliente"));
-                    clienteID.setNome(rs.getString("nome"));
-                    clienteID.setEmail(rs.getString("email"));
-                    clienteID.setEndereco(rs.getString("endereco"));
-                } else {
-                    return null;
-                }
+            if (rs.next()) {    //se o cliente for encontrado, retorna isso
+                clienteID.setIdcliente(rs.getInt("idcliente"));
+                clienteID.setNome(rs.getString("nome"));
+                clienteID.setEmail(rs.getString("email"));
+                clienteID.setEndereco(rs.getString("endereco"));
+            } else {
+                return null;
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
