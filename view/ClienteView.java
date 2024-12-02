@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ClienteView {
-    static ClienteController clienteController = new ClienteController();
-    static Scanner input = new Scanner(System.in);
+    private static ClienteController clienteController = new ClienteController();
+    private static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) throws SQLException {
         int op;
