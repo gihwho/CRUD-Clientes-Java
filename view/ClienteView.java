@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ClienteView {
-    private static ClienteController clienteController = new ClienteController();
+    private static ClienteController clienteController = new ClienteController();       //única instância, classe centralizadora
     private static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) throws SQLException {
