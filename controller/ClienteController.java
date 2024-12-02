@@ -8,12 +8,7 @@ import java.util.List;
 
 //intermediário entre a View e o DAO
 public class ClienteController {
-    private ClienteDAO clienteDAO;      //escapsulamento, outra classe não acessa os atributos
-
-    //construtor, faz inicialização do clienteDAO
-    public ClienteController () {
-        this.clienteDAO = new ClienteDAO();
-    }
+    private ClienteDAO clienteDAO = new ClienteDAO();      //escapsulamento, outra classe não acessa os atributos
 
     public void criaNovoCliente (String nome, String email, String endereco) {
         Cliente novoCliente = new Cliente();
