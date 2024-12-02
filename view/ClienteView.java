@@ -120,6 +120,16 @@ public class ClienteView {
         int id = input.nextInt();
         input.nextLine();
 
+        try {
+            Cliente clienteExiste = clienteController.listaID(id);
+            if (clienteExiste == null) {
+                System.out.println("Cliente ID " + id + " não existe!");
+                return;
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
         System.out.println("Digite o novo nome: ");
         String nome = input.nextLine();
         System.out.println("Digite o novo email: ");
@@ -127,24 +137,26 @@ public class ClienteView {
         System.out.println("Digite o novo endereço: ");
         String endereco = input.nextLine();
 
-        try {
-            clienteController.atualizaCliente(id, nome, email, endereco);
-            System.out.println("Cliente atualizado com sucesso!");
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        clienteController.atualizaCliente(id, nome, email, endereco);
+        System.out.println("Cliente atualizado com sucesso!");
     }
 
-    public static void deletarCliente () {
+    public static void deletarCliente () throws SQLException {
         System.out.println("Digite o ID do cliente que deseja excluir: ");
         int id = input.nextInt();
         input.nextLine();
 
         try {
-            clienteController.deletaCliente(id);
-            System.out.println("Cliente excluído com sucesso!");
+            Cliente clienteExiste = clienteController.listaID(id);
+            if (clienteExiste == null) {
+                System.out.println("Cliente ID " + id + " não existe!");
+                return;
+            }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
+        clienteController.deletaCliente(id);
+        System.out.println("Cliente excluído com sucesso!");
     }
 }
