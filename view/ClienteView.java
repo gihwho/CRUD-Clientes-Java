@@ -54,11 +54,19 @@ public class ClienteView {
         String nome = input.nextLine();
         System.out.println("Digite o email do cliente: ");
         String email = input.nextLine();
-        System.out.println("Digite o endereço do cliente: ");
-        String endereco = input.nextLine();
+        System.out.println("Digite o estado em sigla (deve estar entre as opções listadas): \n");
+        clienteController.exibirSiglas();
+        String estado = input.nextLine().toUpperCase();
+        System.out.println("Digite a cidade: ");
+        String cidade = input.nextLine();
+        System.out.println("Digite o bairro: ");
+        String bairro = input.nextLine();
+        System.out.println("Digite o logradouro: ");
+        String logradouro = input.nextLine();
+        System.out.println("Digite o número: ");
+        String numero = input.nextLine();
 
-        clienteController.criaNovoCliente(nome, email, endereco);
-        System.out.println("Cliente criado!");
+        clienteController.criaNovoCliente(nome, email, estado, cidade, bairro, logradouro, numero);
     }
 
     public static void listarCliente() {
@@ -90,7 +98,7 @@ public class ClienteView {
         try {
             List<Cliente> clientes = clienteController.listaCliente();
             for (Cliente cliente : clientes) {
-                System.out.println("ID: " + cliente.getIdcliente() + " | Nome: " + cliente.getNome() + " | Email: " + cliente.getEmail() + " | Endereço: " + cliente.getEndereco());
+                System.out.println("ID: " + cliente.getIdcliente() + " | Nome: " + cliente.getNome() + " | Email: " + cliente.getEmail() + " | Endereço -> " + cliente.getEndereco());
             }
         } catch (SQLException e) {
             System.out.println("Erro ao listar clientes" + e.getMessage());
@@ -115,7 +123,7 @@ public class ClienteView {
         }
     }
 
-    public static void atualizarCliente () {
+    public static void atualizarCliente () throws SQLException {
         System.out.println("Digite o ID do cliente que gostaria de atualizar: ");
         int id = input.nextInt();
         input.nextLine();
@@ -134,10 +142,19 @@ public class ClienteView {
         String nome = input.nextLine();
         System.out.println("Digite o novo email: ");
         String email = input.nextLine();
-        System.out.println("Digite o novo endereço: ");
-        String endereco = input.nextLine();
+        System.out.println("Digite o novo estado em sigla (deve estar entre as opções listadas): \n");
+        clienteController.exibirSiglas();
+        String estado = input.nextLine().toUpperCase();
+        System.out.println("Digite a nova cidade: ");
+        String cidade = input.nextLine();
+        System.out.println("Digite o novo bairro: ");
+        String bairro = input.nextLine();
+        System.out.println("Digite o novo logradouro: ");
+        String logradouro = input.nextLine();
+        System.out.println("Digite o novo número: ");
+        String numero = input.nextLine();
 
-        clienteController.atualizaCliente(id, nome, email, endereco);
+        clienteController.atualizaCliente(id, nome, email, estado, cidade, bairro, logradouro, numero);
         System.out.println("Cliente atualizado com sucesso!");
     }
 
