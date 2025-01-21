@@ -86,15 +86,15 @@ public class ClienteController {
 
     public List<String> siglas () {
         return Arrays.asList(
-                "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA",
-                "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN",
-                "RS", "RO", "RR", "SC", "SP", "SE", "TO");
+                "AC |" + " AL |" + " AP |" + " AM |" + " BA |" + " CE |" + " DF |" + " ES |" + " GO |" + " MA |" +
+                " MT |" + " MS |" + " MG |" + " PA |" + " PB |" + " PR |" + " PE |" + " PI |" + " RJ |" + " RN |" +
+                " RS |" + " RO |" + " RR |" + " SC |" + " SP |" + " SE |" + " TO");
     }
 
     public void exibirSiglas () {
         List<String> sigla = siglas();
         for (String siglaEstado : sigla) {
-            System.out.println(siglaEstado + " ");
+            System.out.println(siglaEstado + "");
         }
     }
 }

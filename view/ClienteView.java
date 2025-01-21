@@ -54,7 +54,7 @@ public class ClienteView {
         String nome = input.nextLine();
         System.out.println("Digite o email do cliente: ");
         String email = input.nextLine();
-        System.out.println("Digite o estado em sigla (deve estar entre as opções listadas): \n");
+        System.out.println("Digite o estado em sigla (deve estar entre as opções listadas): ");
         clienteController.exibirSiglas();
         String estado = input.nextLine().toUpperCase();
         System.out.println("Digite a cidade: ");

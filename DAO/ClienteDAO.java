@@ -110,7 +110,7 @@ public class ClienteDAO {
 
     public void atualizar(Cliente atualizaCliente) throws SQLException {
         String queryCliente = "UPDATE cliente SET nome = ?, email = ? WHERE idcliente = ?";
-        String queryEndereco = "UPDATE endereco SET estado = ?, cidade = ?, bairro = ?, logradouro = ?, numero = ?";
+        String queryEndereco = "UPDATE endereco SET estado = ?, cidade = ?, bairro = ?, logradouro = ?, numero = ? WHERE idendereco = ?";
         Connection conn = null;
 
         try {
@@ -125,6 +125,7 @@ public class ClienteDAO {
                 stmtEndereco.setString(3, endereco.getBairro());
                 stmtEndereco.setString(4, endereco.getLogradouro());
                 stmtEndereco.setString(5, endereco.getNumero());
+                stmtEndereco.setInt(6, endereco.getIdEndereco());
                 stmtEndereco.executeUpdate();
             }
 
