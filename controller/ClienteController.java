@@ -84,17 +84,18 @@ public class ClienteController {
         clienteDAO.deletar(id);
     }
 
-    public List<String> siglas () {
-        return Arrays.asList(
-                "AC |" + " AL |" + " AP |" + " AM |" + " BA |" + " CE |" + " DF |" + " ES |" + " GO |" + " MA |" +
-                " MT |" + " MS |" + " MG |" + " PA |" + " PB |" + " PR |" + " PE |" + " PI |" + " RJ |" + " RN |" +
-                " RS |" + " RO |" + " RR |" + " SC |" + " SP |" + " SE |" + " TO");
+    public List<String> siglas() {
+        List<String> siglas = Arrays.asList(
+                "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA",
+                "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN",
+                "RS", "RO", "RR", "SC", "SP", "SE", "TO"
+        );
+        return siglas;
     }
 
-    public void exibirSiglas () {
+    public void exibirSiglas() {
         List<String> sigla = siglas();
-        for (String siglaEstado : sigla) {
-            System.out.println(siglaEstado + "");
-        }
+        String siglasFormatadas = String.join(" | ", sigla);
+        System.out.println(siglasFormatadas);
     }
 }

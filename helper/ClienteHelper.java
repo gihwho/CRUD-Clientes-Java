@@ -24,18 +24,18 @@ public class ClienteHelper {
         }
     }
 
-    public static void validarEstado (String estado, List<String> sigla) {
+    public static void validarEstado (String estado, List<String> siglas) {
         if (estado == null || estado.length() > 2) {
             throw new IllegalArgumentException("O estado não pode conter mais do que 2 caracteres ou ser nulo");
         }
-        if (!sigla.contains(estado)) {
+        if (!siglas.contains(estado)) {
             throw new IllegalArgumentException("O estado digitado não é valido");
         }
     }
 
     public static void validarCidade (String cidade) {
         if (cidade == null || cidade.length() > 50) {
-            throw new IllegalArgumentException("A cidade não pode conter mais do que 50 caracteres ou ser nulo");
+            throw new IllegalArgumentException("A cidade não pode conter mais do que 50 caracteres ou ser nula");
         }
         String regex = "[a-zA-ZÀ-ÖØ-öø-ÿ\\s]+";
         if (!cidade.matches(regex)) {
@@ -64,8 +64,8 @@ public class ClienteHelper {
     }
 
     public static void validarNumero (String numero) {
-        if (numero.length() > 6) {
-            throw new IllegalArgumentException("O número não pode conter mais do que 6 caracteres");
+        if (numero == null || numero.length() > 6) {
+            throw new IllegalArgumentException("O número não pode conter mais do que 6 caracteres ou ser nulo");
         }
 
         String regex = "^\\d{1,6}$";

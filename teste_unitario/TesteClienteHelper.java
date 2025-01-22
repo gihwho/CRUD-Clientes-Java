@@ -22,15 +22,15 @@ public class TesteClienteHelper {
 
     @Test
     void testeNomeExcedeCarac () {
-        String nomelongo = "Luuuuuuuuuuaaaaaaaaaaannnnnnnnnnnnn";
+        String nomelongo = "Luuuuuuuuuuuuuuuuuuuuuuuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaannnnnnnnnnnnnnnnnnn";
         Exception exception = assertThrows(IllegalArgumentException.class, () -> ClienteHelper.validarNome(nomelongo));
-        assertEquals("O nome excede 50 caracteres", exception.getMessage());
+        assertEquals("O nome não pode conter mais do que 50 caracteres ou ser nulo", exception.getMessage());
     }
 
     @Test
     void testeNomeNulo () {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> ClienteHelper.validarNome(null));
-        assertEquals("O nome não pode ser nulo", exception.getMessage());
+        assertEquals("O nome não pode conter mais do que 50 caracteres ou ser nulo", exception.getMessage());
     }
 
     @Test
@@ -40,13 +40,21 @@ public class TesteClienteHelper {
     }
 
     @Test
-    void testeEmailInvalido () {
+    void testeEmailInvalidoSemDominio () {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> ClienteHelper.validarEmail("luan3123"));
-        Exception exception1 = assertThrows(IllegalArgumentException.class, () -> ClienteHelper.validarEmail("luanharoldo@gmail"));
-        Exception exception2 = assertThrows(IllegalArgumentException.class, () -> ClienteHelper.validarEmail("luanharoldo@.com"));
         assertEquals("O email está inválido", exception.getMessage());
-        assertEquals("O email está inválido 2", exception1.getMessage());
-        assertEquals("O email está inválido 3", exception2.getMessage());
+    }
+
+    @Test
+    void testeEmailInvalidoSemCom () {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> ClienteHelper.validarEmail("luanharoldo@gmail"));
+        assertEquals("O email está inválido", exception.getMessage());
+    }
+
+    @Test
+    void testeEmailInvalido () {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> ClienteHelper.validarEmail("luanharoldo@.com"));
+        assertEquals("O email está inválido", exception.getMessage());
     }
 
     @Test
@@ -55,11 +63,15 @@ public class TesteClienteHelper {
     }
 
     @Test
-    void testeEstadoInvalido () {
+    void testeEstadoInvalidoLetra () {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> ClienteHelper.validarEstado("a", clienteController.siglas()));
-        Exception exception1 = assertThrows(IllegalArgumentException.class, () -> ClienteHelper.validarEstado("SPP", clienteController.siglas()));
-        assertEquals("O estado inserido não é válido", exception.getMessage());
-        assertEquals("O estado inserido não é válido", exception1.getMessage());
+        assertEquals("O estado digitado não é valido", exception.getMessage());
+    }
+
+    @Test
+    void testeEstadoInvalido () {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> ClienteHelper.validarEstado("HP", clienteController.siglas()));
+        assertEquals("O estado digitado não é valido", exception.getMessage());
     }
 
     @Test
@@ -68,12 +80,16 @@ public class TesteClienteHelper {
     }
 
     @Test
-    void testeCidadeInvalida () {
-        String cidadelonga = "Osascooooooooooooooooooooooooooooooo";
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> ClienteHelper.validarCidade("1234"));
+    void testeCidadeInvalidaLonga () {
+        String cidadelonga = "Ooooooooooooooossssssssssaaaaaaaaaaaasssssssssscccccccccoooooooooooooo";
         Exception exception1 = assertThrows(IllegalArgumentException.class, () -> ClienteHelper.validarCidade(cidadelonga));
-        assertEquals("A cidade deve ter apenas letras", exception.getMessage());
-        assertEquals("A cidade não pode ter mais que 50 caracteres", exception1.getMessage());
+        assertEquals("A cidade não pode conter mais do que 50 caracteres ou ser nula", exception1.getMessage());
+    }
+
+    @Test
+    void testeCidadeInvalida () {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> ClienteHelper.validarCidade("Guaru1hos1234"));
+        assertEquals("A cidade deve conter apenas letras", exception.getMessage());
     }
 
     @Test
@@ -83,9 +99,9 @@ public class TesteClienteHelper {
 
     @Test
     void testeBairroInvalido () {
-        String bairrolongo = "Tatuapeeeeeeeeee Longoooooooooooooooooooooo";
+        String bairrolongo = "Tatuapeeeeeeeeeeeeeeeeeeeeeeeeeeeeee Longoooooooooooooooooooooo";
         Exception exception = assertThrows(IllegalArgumentException.class, () -> ClienteHelper.validarBairro(bairrolongo));
-        assertEquals("O bairro não pode ter mais que 50 caracteres", exception.getMessage());
+        assertEquals("O bairro não pode conter mais do que 50 caracteres ou ser nulo", exception.getMessage());
     }
 
     @Test
@@ -95,9 +111,9 @@ public class TesteClienteHelper {
 
     @Test
     void testeLogradouroInvalido () {
-        String logradourolongo = "Longoooooooooooooooooooooo";
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> ClienteHelper.validarBairro(logradourolongo));
-        assertEquals("O logradouro não pode ter mais que 50 caracteres", exception.getMessage());
+        String logradourolongo = "Llllllllllllllllloooooooooooooooooooooooooooooonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnngggggggggggggggggggggggooooooooooooooooooooooooooooooooooooo";
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> ClienteHelper.validarLogradouro(logradourolongo));
+        assertEquals("O logradouro não pode conter mais do que 100 caracteres ou ser nulo", exception.getMessage());
     }
 
     @Test
@@ -106,12 +122,16 @@ public class TesteClienteHelper {
     }
 
     @Test
-    void testeNumeroInvalido () {
+    void testeNumeroInvalidoLongo () {
         String numerolongo = "1223334444";
-        String numeroLetra = "123Aracajú";
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> ClienteHelper.validarBairro(numerolongo));
-        Exception exception1 = assertThrows(IllegalArgumentException.class, () -> ClienteHelper.validarBairro(numeroLetra));
-        assertEquals("O bairro não pode ter mais que 50 caracteres", exception.getMessage());
-        assertEquals("O número não pode conter letras", exception1.getMessage());
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> ClienteHelper.validarNumero(numerolongo));
+        assertEquals("O número não pode conter mais do que 6 caracteres ou ser nulo", exception.getMessage());
+    }
+
+    @Test
+    void testeNumeroInvalido () {
+        String numeroLetra = "1L3A";
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> ClienteHelper.validarNumero(numeroLetra));
+        assertEquals("O número do endereço deve conter apenas números", exception.getMessage());
     }
 }
